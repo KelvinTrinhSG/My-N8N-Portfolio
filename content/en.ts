@@ -57,6 +57,22 @@ export const en = {
     title: "Projects",
     subtitle: "Real problems, solved with production-grade automation",
   },
+  project: {
+    back: "Back to projects",
+    principles: "Engineering principles",
+    viewRepo: "View on GitHub",
+    workflows: "Workflows",
+    workflowsHint: "Click a workflow to see how it works and the proof from live runs.",
+    ctaTitle: "Need automation like this for your team?",
+    contact: "Contact me",
+  },
+  workflow: {
+    trigger: "Trigger",
+    howItWorks: "How it works",
+    highlights: "Production highlights",
+    result: "Result",
+    viewOnGitHub: "View on GitHub",
+  },
   contact: {
     title: "Contact",
     subtitle: "Have a workflow in mind? Let's talk.",
