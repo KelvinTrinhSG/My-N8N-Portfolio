@@ -19,6 +19,8 @@ export const vi: Dict = {
     language: "Ngôn ngữ",
     toLight: "Chuyển sang giao diện sáng",
     toDark: "Chuyển sang giao diện tối",
+    openMenu: "Mở menu",
+    closeMenu: "Đóng menu",
   },
   hero: {
     greeting: "Xin chào, tôi là",
@@ -91,6 +93,11 @@ export const vi: Dict = {
     emailAddress: "thkien85@gmail.com",
     github: "GitHub",
     githubHandle: "KelvinTrinhSG",
+  },
+  notFound: {
+    title: "Không tìm thấy dự án",
+    body: "Trang này không tồn tại hoặc đã được chuyển đi.",
+    back: "Quay lại danh sách dự án",
   },
   footer: {
     rights: "Xây dựng bằng Next.js.",

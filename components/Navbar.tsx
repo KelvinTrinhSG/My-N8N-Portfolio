@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useLang, useTheme, type Lang } from "@/lib/providers";
 
 const LINKS = ["home", "about", "skills", "projects", "contact"] as const;
@@ -9,6 +10,7 @@ const LANGS: Lang[] = ["en", "vi"];
 export default function Navbar() {
   const { t, lang, setLang } = useLang();
   const { theme, setTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const iconBtn =
     "flex h-9 w-9 cursor-pointer items-center justify-center rounded-(--radius-sm) border border-(--border) bg-(--surface) text-base transition-colors hover:border-(--border-strong)";
@@ -72,8 +74,38 @@ export default function Navbar() {
           >
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
+
+          {/* Phones: section links collapse into a ☰ menu. */}
+          <button
+            type="button"
+            className={`${iconBtn} md:hidden`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
         </div>
       </nav>
+
+      {menuOpen && (
+        <div id="mobile-menu" className="border-t border-(--border) md:hidden">
+          <ul className="mx-auto max-w-6xl px-4 py-2 sm:px-6">
+            {LINKS.map((id) => (
+              <li key={id}>
+                <Link
+                  href={`/#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="block rounded-(--radius-sm) px-3 py-2.5 font-medium text-(--text-muted) hover:bg-(--neutral-tint) hover:text-(--text)"
+                >
+                  {t.nav.links[id]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

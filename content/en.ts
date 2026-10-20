@@ -19,6 +19,8 @@ export const en = {
     language: "Language",
     toLight: "Switch to light mode",
     toDark: "Switch to dark mode",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
   },
   hero: {
     greeting: "Hi, I'm",
@@ -91,6 +93,11 @@ export const en = {
     emailAddress: "thkien85@gmail.com",
     github: "GitHub",
     githubHandle: "KelvinTrinhSG",
+  },
+  notFound: {
+    title: "Project not found",
+    body: "This page doesn't exist or has moved.",
+    back: "Back to projects",
   },
   footer: {
     rights: "Built with Next.js.",
