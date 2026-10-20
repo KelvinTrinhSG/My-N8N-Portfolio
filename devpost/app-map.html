@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App map — AI Agent &amp; n8n Portfolio</title>
+<style>
+  :root { --bg:#FAFAF8; --surface:#fff; --border:#E3DFD6; --text:#171717; --muted:#55524B; --primary:#FF004D; --secondary:#5546FF; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0A0A0F; --surface:#131313; --border:#262626; --text:#F2F1EE; --muted:#A8A49A; --secondary:#8B80FF; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 20px 64px; }
+  h1 { font-size: 30px; letter-spacing: -0.02em; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 40px 0 12px; }
+  p.lead { color: var(--muted); margin: 0 0 24px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; background: color-mix(in srgb, var(--secondary) 10%, transparent); padding: 1px 6px; border-radius: 5px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin: 12px 0; }
+  .stop { display: flex; gap: 14px; }
+  .num { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; display: grid; place-items: center; }
+  .stop h3 { margin: 2px 0 4px; font-size: 16px; }
+  .stop p { margin: 4px 0; color: var(--muted); }
+  ul { padding-left: 20px; } li { margin: 6px 0; }
+  table { border-collapse: collapse; width: 100%; } td, th { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: 13px; color: var(--muted); font-weight: 600; }
+  svg { width: 100%; height: auto; display: block; }
+  .tag { display:inline-block; font-size:12px; font-weight:600; color:var(--secondary); border:1px solid color-mix(in srgb, var(--secondary) 30%, transparent); border-radius:999px; padding:1px 9px; }
+  pre { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; overflow-x: auto; }
+  small { color: var(--muted); }
+  summary { cursor: pointer; font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Bản đồ code — AI Agent &amp; n8n Portfolio</h1>
+  <p class="lead">Trang portfolio song ngữ, giới thiệu các dự án n8n. Khách xem dự án, bấm mở từng workflow để thấy cách nó chạy và ảnh chạy thật, rồi liên hệ. Đây là bản chụp nhanh của code tại commit <code>fc73257</code>; code có thể thay đổi sau này.</p>
+
+  <h2>Bốn phần chính</h2>
+  <table>
+    <tr><th>Phần</th><th>Nằm ở đâu</th><th>Làm gì</th></tr>
+    <tr><td>Nội dung</td><td><code>content/</code></td><td>Chữ giao diện (<code>en.ts</code>, <code>vi.ts</code>) và nội dung dự án + 10 workflow. Tách khỏi giao diện.</td></tr>
+    <tr><td>Giao diện</td><td><code>components/</code>, <code>app/</code></td><td>Navbar, các section trang chính, thẻ dự án, thẻ workflow, hàng ảnh, lightbox. Trang dự án được build sẵn cho mỗi dự án.</td></tr>
+    <tr><td>Ảnh</td><td><code>scripts/images.mjs</code> → <code>public/shots/</code></td><td>Tải ảnh từ repo GitHub, nén thành WebP hai cỡ. Chỉ chạy khi có ảnh mới.</td></tr>
+    <tr><td>Ghi nhớ lựa chọn</td><td><code>lib/providers.tsx</code>, <code>lib/storage.ts</code></td><td>Ngôn ngữ và sáng/tối lưu trong localStorage của trình duyệt.</td></tr>
+  </table>
+
+  <h2>Một thao tác: bấm mở workflow 02</h2>
+  <div class="card">
+    <svg viewBox="0 0 800 170" role="img" aria-label="Sơ đồ: nội dung trong file dự án, qua WorkflowCard khi bấm, tới ScreenshotStrip và Lightbox, thành thẻ bung ra trên màn hình">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#888"/></marker></defs>
+      <g font-family="system-ui, sans-serif" font-size="13">
+        <rect x="10" y="40" width="170" height="80" rx="12" fill="none" stroke="#5546FF" stroke-width="2"/>
+        <text x="95" y="72" text-anchor="middle" font-weight="700" fill="currentColor">① Nội dung</text>
+        <text x="95" y="94" text-anchor="middle" fill="#888">n8n-form-crm-…ts</text>
+        <rect x="215" y="40" width="170" height="80" rx="12" fill="none" stroke="#FF004D" stroke-width="2"/>
+        <text x="300" y="72" text-anchor="middle" font-weight="700" fill="currentColor">② WorkflowCard</text>
+        <text x="300" y="94" text-anchor="middle" fill="#888">bấm → open = true</text>
+        <rect x="420" y="40" width="170" height="80" rx="12" fill="none" stroke="#FF004D" stroke-width="2"/>
+        <text x="505" y="72" text-anchor="middle" font-weight="700" fill="currentColor">③ ScreenshotStrip</text>
+        <text x="505" y="94" text-anchor="middle" fill="#888">ảnh nhỏ → Lightbox</text>
+        <rect x="625" y="40" width="165" height="80" rx="12" fill="none" stroke="#16824F" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="707" y="72" text-anchor="middle" font-weight="700" fill="currentColor">Màn hình</text>
+        <text x="707" y="94" text-anchor="middle" fill="#888">thẻ bung + 7 ảnh</text>
+        <line x1="180" y1="80" x2="212" y2="80" stroke="#888" stroke-width="2" marker-end="url(#a)"/>
+        <line x1="385" y1="80" x2="417" y2="80" stroke="#888" stroke-width="2" marker-end="url(#a)"/>
+        <line x1="590" y1="80" x2="622" y2="80" stroke="#888" stroke-width="2" marker-end="url(#a)"/>
+        <text x="400" y="155" text-anchor="middle" fill="#888">Ảnh nằm sẵn trong public/shots/ — trình duyệt chỉ tải khi thẻ đã bung</text>
+      </g>
+    </svg>
+  </div>
+
+  <p><span class="tag">Tuyến tham khảo</span> <small>Ba điểm dừng bên dưới để bạn tự mở khi cần; chưa đi qua cùng nhau.</small></p>
+
+  <div class="card stop"><div class="num">1</div><div>
+    <h3><code>content/projects/n8n-form-crm-automations.ts</code></h3>
+    <p>Tìm <code>id: "02"</code>. Tên, vấn đề, trigger, các bước, highlights, kết quả và nhãn ảnh đều ở đây. Mỗi đoạn chữ là <code>l("tiếng Anh", "tiếng Việt")</code>.</p>
+  </div></div>
+  <div class="card stop"><div class="num">2</div><div>
+    <h3><code>components/WorkflowCard.tsx</code></h3>
+    <p>Tìm <code>{open &amp;&amp; (</code>. Bấm thẻ đổi biến <code>open</code>; phần chi tiết chỉ được tạo khi mở, nên trang mở ra không tải ảnh nào. Chữ được chọn theo ngôn ngữ bằng <code>pick(...)</code>.</p>
+  </div></div>
+  <div class="card stop"><div class="num">3</div><div>
+    <h3><code>components/ScreenshotStrip.tsx</code></h3>
+    <p>Tìm <code>loading="lazy"</code> và <code>&lt;Lightbox</code>. Mỗi ảnh nhỏ là một nút mở lightbox; ảnh lỗi chuyển sang ô chữ có link GitHub (<code>onError</code>).</p>
+  </div></div>
+
+  <h2>Muốn đổi gì, bắt đầu từ đây</h2>
+  <ul>
+    <li><strong>Sửa chữ của một workflow / nhãn ảnh:</strong> <code>content/projects/n8n-form-crm-automations.ts</code>, rồi chạy <code>npm run check</code>.</li>
+    <li><strong>Tên, chức danh, câu giới thiệu, đoạn About:</strong> mục <code>hero</code> và <code>about</code> trong <code>content/en.ts</code> và <code>content/vi.ts</code>.</li>
+    <li><strong>Thêm một repo mới:</strong> tạo <code>content/projects/&lt;slug&gt;.ts</code>, thêm vào <code>projects</code> trong <code>content/projects/index.ts</code>, thêm repo vào <code>SOURCES</code> trong <code>scripts/images.mjs</code>, chạy <code>npm run images</code>, thêm file kích thước ảnh vào <code>SIZES</code> trong <code>lib/shots.ts</code>. Không phải sửa component nào.</li>
+    <li><strong>Màu sắc, sáng/tối:</strong> các biến <code>--primary</code>, <code>--bg</code>… ở đầu <code>app/globals.css</code>.</li>
+    <li><strong>Menu, nút EN/VI, nút ☀/🌙:</strong> <code>components/Navbar.tsx</code>.</li>
+  </ul>
+
+  <h2>Một cách làm nên dùng lại</h2>
+  <div class="card">
+    <p><strong>Giữ nội dung tách khỏi giao diện, và có một lệnh kiểm tra nội dung.</strong> Trong lúc build, một dự án thử đã được thêm chỉ bằng một file nội dung và một dòng trong <code>content/projects/index.ts</code>: trang chính tự có thẻ thứ hai, <code>/projects/demo-project/</code> tự được tạo, và <code>npm run check</code> (<code>scripts/check-content.mjs</code>) báo ngay là dự án đó còn thiếu ảnh. Khi cố tình làm hỏng một tên ảnh, xóa một bản dịch và tạo id trùng, lệnh này liệt kê đủ ba lỗi và dừng với mã lỗi.</p>
+    <p>Dự án sau, khi một trang hiện nhiều mục cùng kiểu (dự án, sản phẩm, bài viết), hãy để dữ liệu ở một chỗ, giao diện chỉ đọc dữ liệu đó, và viết một lệnh nhỏ kiểm tra dữ liệu trước khi đẩy code lên.</p>
+  </div>
+
+  <h2>Chạy lại</h2>
+<pre>npm install
+npm run dev        # http://localhost:3000
+npm run check      # kiểm tra nội dung
+npm run build      # bản tĩnh trong out/</pre>
+
+  <details class="card">
+    <summary>Các commit của quá trình build</summary>
+    <ul>
+      <li>Scaffold Next.js site with home, about, skills and contact sections</li>
+      <li>Add project page with expandable workflow cards</li>
+      <li>Add image pipeline and screenshot strips</li>
+      <li>Add screenshot lightbox</li>
+      <li>Add EN/VI language toggle and light/dark theme</li>
+      <li>Add mobile menu, not-found page, content check and README</li>
+    </ul>
+  </details>
+</main>
+</body>
+</html>

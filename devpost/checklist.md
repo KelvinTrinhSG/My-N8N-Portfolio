@@ -72,23 +72,25 @@ Build mode: fast
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — sau slice 2: thử trang dự án và đọc nội dung 10 workflow (learner: "quá tuyệt", không cần sửa; chữ tạm ở Hero/About để hỏi lại ở final review)
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Final kick-the-tires exploration and feedback completed — learner dùng thử trên dev server: "OK hết rồi"
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+Kết quả: không cần sửa. Learner giữ nguyên chữ tạm (tên "Kelvin Trinh", chức danh, câu giới thiệu, đoạn About). Kiểm tra cuối: `npm run build`, `npm run lint`, `npm run check` sạch; kiểm tra trên Chrome (máy tính + 375px) cho slice 2–6 đều đạt. Theo yêu cầu của learner, đã commit bộ skill Devpost + `AGENTS.md` và push `main` lên `KelvinTrinhSG/My-N8N-Portfolio`.
+
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [what actually happened; real document/test/code references; unfinished work if interrupted]
-Route and stops: [actual paths and symbols; guided stops completed, or reference-only route]
-Edit outcome: [tried/kept/reverted/declined/not applicable; verification if changed]
-Reflection: [offered/answered/declined/already covered — personal answer belongs only in the ignored profile]
-Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
+Activity and evidence: Tuyến code 3 điểm dừng (bấm mở workflow 02) được gửi cho learner, gắn với mục tiêu "dễ thêm dự án mới"; learner trả lời "quá tuyệt rồi, tiếp" và không báo là đã mở từng điểm — ghi nhận là recap/tuyến tham khảo, không phải thực hành có hướng dẫn đã hoàn tất. Bằng chứng cho phần takeaway: thử thêm `demo-project` (thẻ + trang tự xuất hiện) và `npm run check` bắt 3 lỗi cố ý (slice 6).
+Route and stops: Tuyến tham khảo — `content/projects/n8n-form-crm-automations.ts` (`id: "02"`), `components/WorkflowCard.tsx` (`{open && (`), `components/ScreenshotStrip.tsx` (`loading="lazy"`, `<Lightbox`).
+Edit outcome: Đã đề xuất (đổi nhãn ảnh "Spam logged"); learner không làm — không có thay đổi.
+Reflection: Đề xuất ở lời bàn giao, tùy chọn.
+Activity mode: recap (dev server đang chạy; learner chọn đi tiếp). App map: `devpost/app-map.html` tại commit `fc73257`, kiểm tra hiển thị trên Chrome, không gọi mạng ngoài (chỉ có request do Kaspersky chèn vào).
 
 ## Revisions
 
