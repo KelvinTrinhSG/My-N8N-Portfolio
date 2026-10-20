@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Screenshot } from "@/content/types";
 import { en } from "@/content/en";
 import { shotSrc, thumbSize } from "@/lib/shots";
+import Lightbox from "@/components/Lightbox";
 
 type Props = {
   slug: string;
@@ -13,19 +14,52 @@ type Props = {
 
 // Horizontal, swipeable row of thumbnails with bilingual labels.
 // Fixed 16:10 frames (top-aligned crop) keep the row even and reserve space before load.
+// Clicking a thumbnail opens the lightbox at that image.
 export default function ScreenshotStrip({ slug, shots, githubUrl }: Props) {
+  const [open, setOpen] = useState<number | null>(null);
+  const thumbs = useRef<(HTMLButtonElement | null)[]>([]);
+  // Remember the thumbnail that was clicked last, so focus returns to it on close.
+  const last = useRef(0);
+
+  const close = () => {
+    setOpen(null);
+    thumbs.current[last.current]?.focus();
+  };
+
   return (
-    <ul className="-mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2">
-      {shots.map((s) => (
-        <li key={s.file} className="w-56 shrink-0 snap-start sm:w-64">
-          <Thumb slug={slug} shot={s} githubUrl={githubUrl} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="-mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2">
+        {shots.map((s, i) => (
+          <li key={s.file} className="w-56 shrink-0 snap-start sm:w-64">
+            <Thumb
+              slug={slug}
+              shot={s}
+              githubUrl={githubUrl}
+              buttonRef={(el) => {
+                thumbs.current[i] = el;
+              }}
+              onOpen={() => {
+                last.current = i;
+                setOpen(i);
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+      {open !== null && <Lightbox slug={slug} shots={shots} index={open} onIndex={setOpen} onClose={close} />}
+    </>
   );
 }
 
-function Thumb({ slug, shot, githubUrl }: { slug: string; shot: Screenshot; githubUrl: string }) {
+type ThumbProps = {
+  slug: string;
+  shot: Screenshot;
+  githubUrl: string;
+  buttonRef: (el: HTMLButtonElement | null) => void;
+  onOpen: () => void;
+};
+
+function Thumb({ slug, shot, githubUrl, buttonRef, onOpen }: ThumbProps) {
   const [broken, setBroken] = useState(false);
   const { width, height } = thumbSize(slug, shot.file);
   const label = shot.label.en;
@@ -45,19 +79,27 @@ function Thumb({ slug, shot, githubUrl }: { slug: string; shot: Screenshot; gith
           <span>{en.workflow.viewOnGitHub} ↗</span>
         </a>
       ) : (
-        // Plain <img>: static export, images are pre-compressed by scripts/images.mjs.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={shotSrc(slug, shot.file, "sm")}
-          alt={label}
-          width={width}
-          height={height}
-          loading="lazy"
-          decoding="async"
-          onError={() => setBroken(true)}
-          className="block h-auto w-full object-cover object-top"
-          style={{ aspectRatio: "16 / 10" }}
-        />
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={onOpen}
+          aria-label={`${en.lightbox.open}: ${label}`}
+          className="group block w-full cursor-zoom-in overflow-hidden"
+        >
+          {/* Plain <img>: static export, images are pre-compressed by scripts/images.mjs. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={shotSrc(slug, shot.file, "sm")}
+            alt={label}
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            onError={() => setBroken(true)}
+            className="block h-auto w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+            style={{ aspectRatio: "16 / 10" }}
+          />
+        </button>
       )}
       <figcaption className="border-t border-(--border) px-3 py-2 text-xs font-medium text-(--text-muted)">
         {label}

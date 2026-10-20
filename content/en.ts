@@ -75,6 +75,12 @@ export const en = {
     proof: "Live run proof",
     viewOnGitHub: "View on GitHub",
   },
+  lightbox: {
+    open: "View larger",
+    close: "Close",
+    prev: "Previous image",
+    next: "Next image",
+  },
   contact: {
     title: "Contact",
     subtitle: "Have a workflow in mind? Let's talk.",
