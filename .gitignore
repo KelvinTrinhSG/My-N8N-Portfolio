@@ -1,0 +1,17 @@
+# Personal learning context
+/devpost/learner-profile.md
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Build output and dependencies
+/node_modules
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Downloaded original screenshots (scripts/images.mjs)
+/.cache/

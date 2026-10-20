@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scope — AI Agent &amp; n8n Portfolio</title>
+<style>
+  :root {
+    --bg: #0f1220; --card: #181c30; --text: #e7e9f3; --muted: #9aa0b8;
+    --accent: #7c6cff; --accent-2: #22c3a6; --warn: #f2a541; --cut: #ef5b6b;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+  }
+  main { max-width: 920px; margin: 0 auto; padding: 48px 20px 80px; }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+    background: rgba(34,195,166,.15); color: var(--accent-2); font-weight: 600; letter-spacing: .5px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 40px); margin: 12px 0 6px; }
+  h2 { font-size: 20px; margin: 0 0 12px; }
+  .lede { color: var(--muted); font-size: 18px; margin: 0 0 32px; }
+  section {
+    background: var(--card); border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .kernel { border-left: 4px solid var(--accent); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pill { padding: 4px 12px; border-radius: 999px; background: rgba(124,108,255,.15); color: #c9c2ff; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .who { background: rgba(255,255,255,.03); border-radius: 10px; padding: 14px; }
+  .who strong { display: block; margin-bottom: 4px; }
+  svg { width: 100%; height: auto; display: block; }
+  .steps { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .steps button {
+    background: rgba(255,255,255,.06); color: var(--text); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: 14px;
+  }
+  .steps button.active { background: var(--accent); border-color: var(--accent); }
+  .step-text { margin-top: 12px; color: var(--muted); min-height: 3em; }
+  details {
+    background: rgba(255,255,255,.03); border-radius: 10px; padding: 12px 16px; margin-bottom: 10px;
+    border-left: 4px solid var(--accent-2);
+  }
+  details.later { border-left-color: var(--warn); }
+  details.cut { border-left-color: var(--cut); }
+  details.open-q { border-left-color: var(--muted); }
+  summary { cursor: pointer; font-weight: 600; }
+  details ul { margin: 10px 0 0; padding-left: 20px; }
+  a { color: #a99eff; }
+  .refs li { margin-bottom: 6px; }
+  .demo { font-size: 15px; }
+  .demo ol { padding-left: 20px; }
+  .wow { margin-top: 12px; padding: 12px; border-radius: 10px; background: rgba(124,108,255,.12); }
+</style>
+</head>
+<body>
+<main>
+  <span class="badge">SCOPE · APPROVED</span>
+  <h1>AI Agent &amp; n8n Portfolio</h1>
+  <p class="lede">Trang web portfolio cá nhân giới thiệu các dự án AI Agent và n8n automation, giúp khách hàng Upwork và nhà tuyển dụng kiểm tra kinh nghiệm rồi liên hệ.</p>
+
+  <section class="kernel">
+    <h2>💎 Điểm khác biệt (Unique Kernel)</h2>
+    <p>Không chỉ "tôi biết n8n" — mà là <strong>automation production-ready</strong>. Mỗi dự án cho thấy <em>cách</em> giải quyết vấn đề thật, không chỉ ảnh chụp workflow.</p>
+    <div class="pills">
+      <span class="pill">✅ Có test</span>
+      <span class="pill">🛡️ Chống mất lead</span>
+      <span class="pill">🤖 Chống bot</span>
+      <span class="pill">🔌 Nhiều tích hợp</span>
+      <span class="pill">🧠 Kết hợp AI</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>👥 Dành cho ai</h2>
+    <div class="grid">
+      <div class="who"><strong>Khách hàng Upwork</strong>Đang cân nhắc thuê người làm automation / AI agent.</div>
+      <div class="who"><strong>Nhà tuyển dụng</strong>Muốn đánh giá kinh nghiệm thực tế.</div>
+    </div>
+    <p style="color:var(--muted);margin-bottom:0">Họ muốn nhanh chóng kiểm tra: người này đã làm được gì, chất lượng ra sao — rồi quyết định có liên hệ hay không.</p>
+  </section>
+
+  <section>
+    <h2>🔁 Luồng chính (Core Loop)</h2>
+    <svg viewBox="0 0 860 120" role="img" aria-label="Sơ đồ luồng chính: Mở trang, Dự án, Chi tiết repo, Chi tiết workflow, Liên hệ">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#9aa0b8"/>
+        </marker>
+      </defs>
+      <g font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">
+        <g class="node" data-i="0"><rect x="5" y="30" width="140" height="60" rx="12" fill="#232846" stroke="#7c6cff"/><text x="75" y="65" fill="#e7e9f3">Mở trang</text></g>
+        <g class="node" data-i="1"><rect x="180" y="30" width="140" height="60" rx="12" fill="#232846" stroke="#7c6cff"/><text x="250" y="65" fill="#e7e9f3">Phần Dự án</text></g>
+        <g class="node" data-i="2"><rect x="355" y="30" width="140" height="60" rx="12" fill="#232846" stroke="#7c6cff"/><text x="425" y="58" fill="#e7e9f3">Dự án (repo)</text><text x="425" y="76" fill="#9aa0b8" font-size="12">10 workflow</text></g>
+        <g class="node" data-i="3"><rect x="530" y="30" width="140" height="60" rx="12" fill="#232846" stroke="#7c6cff"/><text x="600" y="65" fill="#e7e9f3">Chi tiết workflow</text></g>
+        <g class="node" data-i="4"><rect x="705" y="30" width="150" height="60" rx="12" fill="#1d3a37" stroke="#22c3a6"/><text x="780" y="65" fill="#e7e9f3">📩 Liên hệ</text></g>
+        <line x1="147" y1="60" x2="176" y2="60" stroke="#9aa0b8" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="322" y1="60" x2="351" y2="60" stroke="#9aa0b8" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="497" y1="60" x2="526" y2="60" stroke="#9aa0b8" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="672" y1="60" x2="701" y2="60" stroke="#9aa0b8" stroke-width="2" marker-end="url(#arrow)"/>
+      </g>
+    </svg>
+    <div class="steps" id="steps"></div>
+    <p class="step-text" id="stepText"></p>
+  </section>
+
+  <section class="demo">
+    <h2>🎬 Thế nào là "xong"</h2>
+    <p>Video demo ~1 phút:</p>
+    <ol>
+      <li>Mở trang</li>
+      <li>Lướt tới phần Dự án</li>
+      <li>Bấm vào dự án <code>n8n-form-crm-automations</code></li>
+      <li>Bấm vào một workflow, xem chi tiết</li>
+      <li>Bấm Liên hệ</li>
+    </ol>
+    <div class="wow">✨ <strong>Khoảnh khắc "oh, that's cool":</strong> bấm vào dự án và thấy ngay 10 workflow production-ready với điểm nổi bật kỹ thuật của từng cái.</div>
+  </section>
+
+  <section>
+    <h2>✂️ Phạm vi</h2>
+    <details class="now" open>
+      <summary>🟢 Làm ngay (POC)</summary>
+      <ul>
+        <li>Trang portfolio responsive theo bố cục Bianca, theme theo Skill Pack guide</li>
+        <li>Các phần cơ bản: giới thiệu, kỹ năng/tích hợp, dự án, liên hệ (chi tiết chốt ở PRD)</li>
+        <li>Một dự án: <code>n8n-form-crm-automations</code> — một dự án lớn, bên trong 10 workflow có xem chi tiết</li>
+        <li>Nút/phần Liên hệ hoạt động</li>
+        <li>Dữ liệu dự án tách riêng khỏi giao diện để thêm repo mới dễ dàng</li>
+      </ul>
+    </details>
+    <details class="later">
+      <summary>🟡 Để sau</summary>
+      <ul>
+        <li>Thêm các repo GitHub khác</li>
+        <li>Đưa trang lên mạng (GitHub Pages / Netlify…) — tùy chọn</li>
+      </ul>
+    </details>
+    <details class="cut">
+      <summary>🔴 Cắt bỏ</summary>
+      <ul>
+        <li><strong>Tự động lấy dữ liệu từ GitHub API</strong> — thêm phức tạp (giới hạn API, xử lý lỗi); nhập dữ liệu thủ công đã đủ.</li>
+      </ul>
+    </details>
+    <details class="open-q">
+      <summary>❔ Chốt ở PRD</summary>
+      <ul>
+        <li>Liên hệ bằng cách nào: email, link Upwork, hay form?</li>
+        <li>Song ngữ Việt/Anh và chế độ sáng/tối — cần ngay hay để sau?</li>
+      </ul>
+    </details>
+  </section>
+
+  <section>
+    <h2>🎨 Tham khảo</h2>
+    <ul class="refs">
+      <li><strong>Bố cục UI:</strong> <a href="https://github.com/bedimcode/responsive-porfolio-website-Bianca">bedimcode / Bianca</a></li>
+      <li><strong>Theme, font, màu:</strong> <a href="https://github.com/KelvinTrinhSG/Devpost-Learn-Skill-Pack---How-To-Use">Devpost Learn Skill Pack guide</a></li>
+      <li><strong>Nội dung:</strong> <a href="https://github.com/KelvinTrinhSG/n8n-form-crm-automations">n8n-form-crm-automations</a> (10 workflow, 63 test)</li>
+    </ul>
+  </section>
+</main>
+<script>
+  const steps = [
+    ["Mở trang", "Khách hàng / nhà tuyển dụng mở portfolio — ấn tượng đầu tiên: chuyên nghiệp, đáng tin."],
+    ["Phần Dự án", "Lướt xuống phần Dự án, thấy các repo được trình bày như những dự án lớn."],
+    ["Dự án (repo)", "Bấm vào n8n-form-crm-automations — thấy 10 workflow production-ready."],
+    ["Chi tiết workflow", "Bấm một workflow: vấn đề nó giải quyết, tích hợp, điểm kỹ thuật nổi bật."],
+    ["Liên hệ", "Thấy thuyết phục → bấm Liên hệ."]
+  ];
+  const box = document.getElementById("steps");
+  const text = document.getElementById("stepText");
+  const nodes = document.querySelectorAll(".node rect");
+  function show(i) {
+    box.querySelectorAll("button").forEach((b, j) => b.classList.toggle("active", i === j));
+    nodes.forEach((n, j) => n.setAttribute("stroke-width", i === j ? 4 : 1));
+    text.textContent = steps[i][1];
+  }
+  steps.forEach(([label], i) => {
+    const b = document.createElement("button");
+    b.textContent = (i + 1) + ". " + label;
+    b.onclick = () => show(i);
+    box.appendChild(b);
+  });
+  show(0);
+</script>
+</body>
+</html>

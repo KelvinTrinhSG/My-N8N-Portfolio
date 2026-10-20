@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRD — AI Agent & n8n Portfolio</title>
+<style>
+  :root { --bg:#f7f8fb; --card:#fff; --text:#1d2433; --muted:#5b6476; --accent:#3b5bdb; --accent-soft:#e7ecff; --line:#dfe3ec; --ok:#2f9e44; --warn:#e8590c; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+  main { max-width:920px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:1.8rem; margin:0 0 4px; }
+  h2 { font-size:1.25rem; margin:40px 0 12px; padding-bottom:6px; border-bottom:2px solid var(--line); }
+  .sub { color:var(--muted); margin:0 0 8px; }
+  .badge { display:inline-block; font-size:.75rem; padding:2px 8px; border-radius:999px; background:#fff3bf; color:#7a5b00; font-weight:600; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:12px 0; }
+  .grow { background:var(--accent-soft); border-left:4px solid var(--accent); padding:12px 16px; border-radius:8px; }
+  svg text { font-family:inherit; }
+  .steps { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+  .steps button { border:1px solid var(--line); background:var(--card); padding:6px 12px; border-radius:8px; cursor:pointer; font:inherit; }
+  .steps button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .stepbox { min-height:90px; }
+  details { background:var(--card); border:1px solid var(--line); border-radius:10px; margin:10px 0; }
+  summary { cursor:pointer; padding:12px 16px; font-weight:600; list-style:none; }
+  summary::-webkit-details-marker { display:none; }
+  summary::before { content:"▸ "; color:var(--accent); }
+  details[open] summary::before { content:"▾ "; }
+  details > div { padding:0 16px 14px; }
+  .crit { list-style:none; padding-left:0; }
+  .crit li::before { content:"☐ "; color:var(--ok); font-weight:700; }
+  .tag { display:inline-block; font-size:.75rem; padding:1px 8px; margin:2px 4px 2px 0; border-radius:999px; background:var(--accent-soft); color:var(--accent); }
+  .wf { border:1px solid var(--line); border-radius:10px; background:var(--card); margin:8px 0; }
+  .wf button { all:unset; display:block; width:100%; padding:12px 16px; cursor:pointer; box-sizing:border-box; }
+  .wf .body { display:none; padding:0 16px 14px; border-top:1px dashed var(--line); }
+  .wf.open .body { display:block; }
+  .wf .t { font-weight:700; }
+  .wf .p { color:var(--muted); font-size:.92rem; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:640px){ .cols { grid-template-columns:1fr; } }
+  .assume { border-left:4px solid var(--warn); background:#fff4e6; padding:10px 14px; border-radius:8px; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; }
+  td { padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  td:first-child { font-weight:600; width:38%; }
+  .thumbs { display:flex; gap:10px; overflow-x:auto; padding:10px 0; scroll-snap-type:x mandatory; }
+  .thumbs button { all:unset; cursor:pointer; flex:0 0 150px; scroll-snap-align:start; }
+  .thumbs .ph { width:150px; aspect-ratio:16/10; border-radius:8px; border:1px solid var(--line); background:#eef1f7; overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:.75rem; color:var(--muted); text-align:center; }
+  .thumbs img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  .thumbs span { display:block; font-size:.78rem; margin-top:4px; color:var(--muted); }
+  .lb { position:fixed; inset:0; background:rgba(10,12,20,.92); display:none; align-items:center; justify-content:center; z-index:10; }
+  .lb.on { display:flex; }
+  .lb figure { margin:0; max-width:92vw; text-align:center; color:#fff; }
+  .lb img { max-width:92vw; max-height:82vh; border-radius:6px; background:#222; }
+  .lb button { position:absolute; background:rgba(255,255,255,.12); color:#fff; border:0; font-size:28px; width:48px; height:48px; border-radius:50%; cursor:pointer; }
+  .lb .x { top:16px; right:16px; font-size:20px; }
+  .lb .l { left:12px; top:50%; } .lb .r { right:12px; top:50%; }
+</style>
+</head>
+<body>
+<main>
+  <span class="badge" style="background:#d3f9d8;color:#2b8a3e">status: approved</span>
+  <h1>AI Agent &amp; n8n Portfolio — PRD</h1>
+  <p class="sub">Trang portfolio song ngữ (EN mặc định / VI), có sáng và tối, giúp khách Upwork và nhà tuyển dụng xem dự án n8n và AI Agent rồi liên hệ.</p>
+
+  <div class="grow"><strong>Scope → PRD đã cụ thể hơn thế nào:</strong> Scope chỉ ghi "bấm vào một workflow → xem chi tiết". Giờ đã rõ chi tiết gồm những gì: thẻ gọn để đọc lướt trong 3 giây, bấm vào thì bung ra trigger, các bước, <em>production highlights</em>, kết quả và link GitHub, tất cả ngay trong trang dự án.</div>
+
+  <h2>1. Hành trình chính</h2>
+  <svg viewBox="0 0 900 130" width="100%" role="img" aria-label="Sơ đồ hành trình: Home, Dự án, Trang dự án, Bung workflow, Liên hệ">
+    <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3b5bdb"/></marker></defs>
+    <g font-size="14" text-anchor="middle">
+      <rect x="10" y="35" width="140" height="60" rx="10" fill="#e7ecff" stroke="#3b5bdb"/><text x="80" y="62">Home</text><text x="80" y="80" font-size="11" fill="#5b6476">EN · sáng/tối</text>
+      <rect x="190" y="35" width="140" height="60" rx="10" fill="#e7ecff" stroke="#3b5bdb"/><text x="260" y="62">Phần Dự án</text><text x="260" y="80" font-size="11" fill="#5b6476">10 workflow · 63 test</text>
+      <rect x="370" y="35" width="150" height="60" rx="10" fill="#e7ecff" stroke="#3b5bdb"/><text x="445" y="62">Trang dự án</text><text x="445" y="80" font-size="11" fill="#5b6476">tổng quan + 10 thẻ</text>
+      <rect x="560" y="35" width="150" height="60" rx="10" fill="#e7ecff" stroke="#3b5bdb"/><text x="635" y="62">Bung workflow</text><text x="635" y="80" font-size="11" fill="#5b6476">ngay tại chỗ</text>
+      <rect x="750" y="35" width="140" height="60" rx="10" fill="#d3f9d8" stroke="#2f9e44"/><text x="820" y="62">Liên hệ</text><text x="820" y="80" font-size="11" fill="#5b6476">Email · GitHub</text>
+      <path d="M150 65 H186" stroke="#3b5bdb" stroke-width="2" marker-end="url(#a)"/>
+      <path d="M330 65 H366" stroke="#3b5bdb" stroke-width="2" marker-end="url(#a)"/>
+      <path d="M520 65 H556" stroke="#3b5bdb" stroke-width="2" marker-end="url(#a)"/>
+      <path d="M710 65 H746" stroke="#3b5bdb" stroke-width="2" marker-end="url(#a)"/>
+    </g>
+  </svg>
+
+  <div class="steps" id="steps"></div>
+  <div class="card stepbox" id="stepbox"></div>
+
+  <h2>2. Bề mặt và bố cục</h2>
+  <div class="cols">
+    <div class="card"><strong>Trang chính</strong> (một trang cuộn, bố cục Bianca)<br>Nav (EN/VI · ☀/🌙) → Home → Giới thiệu → Kỹ năng/Tích hợp → Dự án → Liên hệ → Footer</div>
+    <div class="card"><strong>Trang chi tiết dự án</strong><br>← Quay lại · Tổng quan + link GitHub · 10 thẻ workflow · nút Liên hệ</div>
+  </div>
+  <p class="sub">Look &amp; feel: theme, font và màu lấy theo Skill Pack guide, có bản sáng và bản tối. Cảm giác chuyên nghiệp, đáng tin cậy, kỹ thuật vững, đọc lướt vẫn rõ.</p>
+
+  <h2>3. Chi tiết workflow (bấm thử)</h2>
+  <div class="assume"><strong>Assumption:</strong> phần này Claude tự quyết theo yêu cầu của bạn. Bạn có thể đổi lúc review.</div>
+  <div class="wf"><button onclick="this.parentElement.classList.toggle('open')">
+    <div class="t">02 · Secure Webhook Gateway</div>
+    <div class="p">Blocks bots and forged requests before they reach your CRM.</div>
+    <span class="tag">Webhook</span><span class="tag">HMAC</span></button>
+    <div class="body">
+      <p><strong>Trigger:</strong> incoming webhook</p>
+      <p><strong>How it works:</strong> verify signature → rate-limit check → spam scoring → forward clean leads</p>
+      <p><strong>Production highlights:</strong></p>
+      <ul><li>HMAC-SHA256 request signing</li><li>Rate limiting per source</li><li>Spam scoring before CRM write</li></ul>
+      <p><a href="#" onclick="return false">View on GitHub ↗</a></p>
+    </div>
+  </div>
+  <div class="wf"><button onclick="this.parentElement.classList.toggle('open')">
+    <div class="t">01 · Form → HubSpot → Sheets → Email</div>
+    <div class="p">Captures web-form leads into CRM, sheet and inbox automatically.</div>
+    <span class="tag">HubSpot</span><span class="tag">Google Sheets</span><span class="tag">SMTP</span></button>
+    <div class="body">
+      <p><strong>Trigger:</strong> form webhook</p>
+      <p><strong>How it works:</strong> validate → upsert contact → log to sheet → send email</p>
+      <p><strong>Production highlights:</strong></p>
+      <ul><li>Race-safe upsert</li><li>Validation rules</li></ul>
+      <p><strong>Result:</strong> ~10 h/month saved</p>
+      <p><a href="#" onclick="return false">View on GitHub ↗</a></p>
+    </div>
+  </div>
+  <ul class="crit">
+    <li>Bấm thẻ thì chi tiết bung ra, bấm lại thì thu gọn. Có thể bung nhiều thẻ cùng lúc.</li>
+    <li>Mỗi workflow có đủ tên, vấn đề, tag, trigger, các bước, highlights và link GitHub. Mục "Result" chỉ hiện khi có số liệu.</li>
+    <li>Đọc được thoải mái trên điện thoại.</li>
+  </ul>
+
+  <h2>3b. Ảnh chạy thật (mới, bấm thử)</h2>
+  <div class="grow">Repo có <strong>52 ảnh, khoảng 10 MB</strong>. Để trang vẫn nhanh: ảnh <strong>chỉ tải khi bung workflow</strong>, ảnh nhỏ được nén, bản đầy đủ chỉ tải khi phóng to, và chỗ ảnh được giữ sẵn nên nội dung không bị nhảy. Ảnh kết quả (HubSpot, Sheets, Email) xếp trước, ảnh execution n8n xếp sau.</div>
+  <div class="card">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <img src="../assets/avatar-original.png" alt="Avatar" width="96" height="96" style="border-radius:50%;object-fit:cover;border:3px solid var(--accent)">
+      <div><strong>Ảnh đại diện ở Home</strong><br><span class="sub">Ảnh được thu nhỏ và nén cho web (ảnh gốc 2 MB). Tông tím/xanh neon hợp với nền tối, và cần có viền để nổi trên nền sáng.</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>Ví dụ: 02 · Secure Webhook Gateway, Live run proof</strong>
+    <div class="thumbs" id="thumbs"></div>
+    <p class="sub" style="font-size:.85rem">Ảnh ở bản demo này lấy trực tiếp từ GitHub nên cần có mạng. Ảnh nào không tải được sẽ hiện nhãn thay cho ảnh.</p>
+  </div>
+  <ul class="crit">
+    <li>Mở trang chính thì không tải ảnh workflow nào</li>
+    <li>Bung workflow thì thấy ảnh nhỏ có nhãn, nội dung không nhảy</li>
+    <li>Ảnh xem lớn có nút trước/sau và bộ đếm, đóng được bằng ✕, Esc hoặc bấm ra ngoài, vuốt được trên điện thoại</li>
+    <li>Đọc được chữ trong ảnh execution khi xem lớn</li>
+  </ul>
+  <div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+    <button class="x" onclick="closeLb()" aria-label="Close">✕</button>
+    <button class="nav l" onclick="mv(-1)" aria-label="Previous">‹</button>
+    <figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure>
+    <button class="nav r" onclick="mv(1)" aria-label="Next">›</button>
+  </div>
+
+  <h2>4. Hành vi và tiêu chí kiểm tra</h2>
+  <details open><summary>Ngôn ngữ EN / VI</summary><div>
+    <p>Có đủ hai bản cho toàn bộ nội dung. Lần đầu vào trang hiện tiếng Anh. Đổi ngôn ngữ thì trang không tải lại, và lựa chọn được nhớ.</p>
+    <ul class="crit"><li>Lần đầu vào trang thấy tiếng Anh</li><li>Bấm VI thì mọi chữ đổi sang tiếng Việt, kể cả workflow đang bung</li><li>Tải lại trang vẫn giữ ngôn ngữ đã chọn</li></ul></div></details>
+  <details><summary>Sáng / Tối</summary><div>
+    <p>Lần đầu vào trang theo cài đặt của máy. Bấm nút thì đổi ngay, và lựa chọn được nhớ.</p>
+    <ul class="crit"><li>Cả trang đổi sáng ↔ tối, chữ vẫn đọc rõ</li><li>Tải lại trang hoặc sang trang dự án vẫn giữ chế độ đã chọn</li></ul></div></details>
+  <details><summary>Danh sách và chi tiết dự án</summary><div>
+    <ul class="crit"><li>Thẻ dự án hiện "10 workflows · 63 tests"</li><li>Bấm thẻ thì mở trang dự án</li><li>Trang dự án có đủ 10 workflow theo thứ tự 01→10</li><li>Link GitHub mở repo trong tab mới</li></ul></div></details>
+  <details><summary>Liên hệ</summary><div>
+    <p>Email thkien85@gmail.com (mở ứng dụng email, địa chỉ cũng hiện thành chữ) và GitHub (github.com/KelvinTrinhSG). Không có form.</p>
+    <ul class="crit"><li>Bấm Email thì ứng dụng email mở với địa chỉ đúng</li><li>Bấm GitHub thì hồ sơ mở trong tab mới</li></ul></div></details>
+  <details><summary>Thêm dự án sau này</summary><div>
+    <p>Nội dung tách khỏi giao diện, nên thêm nội dung là có thêm thẻ và trang dự án mới.</p>
+    <ul class="crit"><li>Thêm một dự án thử thì thẻ mới xuất hiện mà không phải sửa giao diện</li></ul></div></details>
+
+  <h2>5. Trạng thái đặc biệt</h2>
+  <table>
+    <tr><td>Lần đầu vào trang</td><td>Tiếng Anh, sáng/tối theo máy, chưa thẻ nào bung</td></tr>
+    <tr><td>Quay lại trang</td><td>Giữ ngôn ngữ và chế độ sáng/tối, ngoài ra không lưu gì khác</td></tr>
+    <tr><td>Workflow không có "Result"</td><td>Bỏ hẳn mục đó, không để ô trống</td></tr>
+    <tr><td>Thiếu bản dịch</td><td>Hiện bản tiếng Anh</td></tr>
+    <tr><td>Link dự án không tồn tại</td><td>"Project not found" kèm nút quay về phần Dự án</td></tr>
+  </table>
+
+  <h2>6. Làm ngay và để sau</h2>
+  <div class="cols">
+    <div class="card"><strong>✅ Làm ngay</strong><ul><li>Trang chính 5 phần</li><li>Trang dự án với 10 workflow bung ra được</li><li>EN/VI và sáng/tối, có nhớ lựa chọn</li><li>52 ảnh chạy thật: ảnh nhỏ, xem lớn bằng lightbox, tải nhẹ</li><li>Ảnh đại diện ở Home</li><li>Email + GitHub</li><li>Nội dung tách khỏi giao diện</li><li>Dùng tốt trên điện thoại</li></ul></div>
+    <div class="card"><strong>⏸ Để sau</strong><ul><li>Các repo khác</li><li>Đưa lên mạng</li><li>Âm thanh bật/tắt</li><li>Upwork / LinkedIn, lọc dự án</li></ul></div>
+  </div>
+
+  <h2>7. Câu hỏi còn mở</h2>
+  <div class="card">Tên hiển thị, chức danh và câu giới thiệu: có thể dùng chữ tạm, bạn sửa lúc build.</div>
+
+  <h2>Nhận xét của Claude</h2>
+  <div class="card">Hành trình đã khép kín từ Home tới Liên hệ, và khớp với video demo 1 phút. Mỗi phần đều có tiêu chí nhìn là kiểm tra được. Song ngữ cộng sáng/tối làm khối lượng nội dung tăng gần gấp đôi (10 workflow × 2 ngôn ngữ), nhưng vẫn vừa một POC vì nội dung đã có sẵn trong repo. Chỗ yếu nhất là phần chi tiết workflow do Claude chọn thay bạn, nên bạn xem kỹ mục 3.</div>
+</main>
+<script>
+  const steps = [
+    ["1 · Mở trang","Khách thấy Home: tên, chức danh, một câu giới thiệu, nút <b>View projects</b> và <b>Contact</b>. Trang hiện tiếng Anh, sáng/tối theo máy."],
+    ["2 · Lướt xuống","Qua Giới thiệu (vì sao production-ready) và Kỹ năng/Tích hợp: n8n, HubSpot, Sheets, Calendly, OpenAI, Email…"],
+    ["3 · Phần Dự án","Thẻ <code>n8n-form-crm-automations</code>: mô tả một câu, <b>10 workflows · 63 tests</b>, tag tích hợp."],
+    ["4 · Trang dự án","Tổng quan, các nguyên tắc kỹ thuật, link GitHub, 10 thẻ workflow gọn."],
+    ["5 · Bung workflow","Bấm vào thẻ thì chi tiết bung ra ngay tại chỗ: trigger, các bước, highlights, kết quả, link GitHub."],
+    ["6 · Liên hệ","Bấm Email (mở ứng dụng email) hoặc GitHub. Hành trình kết thúc ở đây."]
+  ];
+  const s = document.getElementById('steps'), box = document.getElementById('stepbox');
+  steps.forEach((st,i)=>{ const b=document.createElement('button'); b.textContent=st[0];
+    b.onclick=()=>{ [...s.children].forEach(x=>x.classList.remove('on')); b.classList.add('on'); box.innerHTML='<strong>'+st[0]+'</strong><p>'+st[1]+'</p>'; };
+    s.appendChild(b); if(i===0) b.click(); });
+
+  const base = 'https://raw.githubusercontent.com/KelvinTrinhSG/n8n-form-crm-automations/main/docs/screenshots/';
+  const shots = [
+    ['02-sheet-spam-log.png','Spam log (Sheets)'], ['02-live-test-run.png','Live test run'],
+    ['02-execution-accepted.png','Accepted'], ['02-execution-rejected.png','Forged request rejected'],
+    ['02-execution-rate-limited.png','Rate-limited'], ['02-execution-spam.png','Spam blocked'],
+    ['02-execution-duplicate.png','Duplicate blocked']
+  ];
+  const th = document.getElementById('thumbs'); let cur = 0;
+  shots.forEach((sh,i)=>{ const b=document.createElement('button');
+    b.innerHTML='<div class="ph"><img loading="lazy" src="'+base+sh[0]+'" alt="'+sh[1]+'" onerror="this.parentElement.textContent=\''+sh[1]+'\'"></div><span>'+sh[1]+'</span>';
+    b.onclick=()=>openLb(i); th.appendChild(b); });
+  const lb=document.getElementById('lb'), li=document.getElementById('lbimg'), lc=document.getElementById('lbcap');
+  function openLb(i){ cur=(i+shots.length)%shots.length; li.src=base+shots[cur][0]; li.alt=shots[cur][1]; lc.textContent=shots[cur][1]+' · '+(cur+1)+' / '+shots.length; lb.classList.add('on'); }
+  function closeLb(){ lb.classList.remove('on'); }
+  function mv(d){ openLb(cur+d); }
+  document.addEventListener('keydown',e=>{ if(!lb.classList.contains('on')) return; if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') mv(-1); if(e.key==='ArrowRight') mv(1); });
+  let x0=null; lb.addEventListener('touchstart',e=>x0=e.touches[0].clientX); lb.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) mv(dx<0?1:-1); x0=null; });
+</script>
+</body>
+</html>
