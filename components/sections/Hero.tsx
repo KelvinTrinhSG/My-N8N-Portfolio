@@ -20,15 +20,18 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Avatar placeholder — replaced by the compressed photo in slice 3. */}
         <div className="order-1 mx-auto md:order-2">
-          <div
-            className="flex h-56 w-56 items-center justify-center rounded-full border-[3px] border-(--secondary) text-5xl font-extrabold text-white sm:h-72 sm:w-72"
-            style={{ background: "linear-gradient(135deg, var(--secondary), var(--primary))" }}
-            aria-hidden
-          >
-            KT
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/avatar-640.webp"
+            srcSet="/avatar-320.webp 320w, /avatar-640.webp 640w"
+            sizes="(min-width: 640px) 288px, 224px"
+            alt={t.avatarAlt}
+            width={640}
+            height={640}
+            fetchPriority="high"
+            className="avatar h-56 w-56 rounded-full border-[3px] border-(--secondary) object-cover sm:h-72 sm:w-72"
+          />
         </div>
       </div>
     </section>

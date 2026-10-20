@@ -4,12 +4,16 @@ import { useId, useState } from "react";
 import type { Workflow } from "@/content/types";
 import { en } from "@/content/en";
 import Tag from "@/components/ui/Tag";
+import ScreenshotStrip from "@/components/ScreenshotStrip";
 
-export default function WorkflowCard({ workflow, repo }: { workflow: Workflow; repo: string }) {
+type Props = { workflow: Workflow; repo: string; slug: string };
+
+export default function WorkflowCard({ workflow, repo, slug }: Props) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const t = en.workflow;
   const w = workflow;
+  const githubUrl = `${repo}/tree/main/projects/${w.folder}`;
 
   return (
     <article
@@ -79,8 +83,14 @@ export default function WorkflowCard({ workflow, repo }: { workflow: Workflow; r
             </Block>
           )}
 
+          {w.screenshots.length > 0 && (
+            <Block title={t.proof}>
+              <ScreenshotStrip slug={slug} shots={w.screenshots} githubUrl={githubUrl} />
+            </Block>
+          )}
+
           <a
-            href={`${repo}/tree/main/projects/${w.folder}`}
+            href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-sm font-semibold text-(--primary) hover:underline"

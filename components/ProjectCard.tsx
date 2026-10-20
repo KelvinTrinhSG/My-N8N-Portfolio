@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Project } from "@/content/types";
 import Tag from "@/components/ui/Tag";
+import { shotSrc, thumbSize } from "@/lib/shots";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -8,15 +9,17 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={`/projects/${project.slug}/`}
       className="card-hover group flex h-full flex-col overflow-hidden rounded-(--radius-lg) border border-(--border) bg-(--surface)"
     >
-      {/* Cover placeholder — the real screenshot arrives in slice 3. */}
-      <span
-        className="block aspect-video"
-        style={{
-          background:
-            "linear-gradient(135deg, color-mix(in srgb, var(--primary) 20%, var(--surface-2)), color-mix(in srgb, var(--secondary) 20%, var(--surface-2)))",
-        }}
-        aria-hidden
-      />
+      <span className="block aspect-video overflow-hidden bg-(--surface-2)">
+        {/* Plain <img>: static export, images are pre-compressed by scripts/images.mjs. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={shotSrc(project.slug, project.cover, "sm")}
+          alt=""
+          {...thumbSize(project.slug, project.cover)}
+          decoding="async"
+          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+      </span>
       <span className="flex flex-1 flex-col gap-3 p-5">
         <span className="text-lg font-bold leading-snug group-hover:text-(--primary)">{project.name.en}</span>
         <span className="text-sm leading-relaxed text-(--text-muted)">{project.summary.en}</span>

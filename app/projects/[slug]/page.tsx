@@ -81,7 +81,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         <ol className="mt-6 space-y-3">
           {project.workflows.map((w) => (
             <li key={w.id}>
-              <WorkflowCard workflow={w} repo={project.repo} />
+              <WorkflowCard workflow={w} repo={project.repo} slug={project.slug} />
             </li>
           ))}
         </ol>

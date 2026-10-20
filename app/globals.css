@@ -152,3 +152,9 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Avatar: soft violet glow in dark mode (spec.md > Look and Feel). */
+.avatar { box-shadow: var(--shadow-md); }
+[data-theme="dark"] .avatar {
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--secondary) 12%, transparent), 0 0 48px color-mix(in srgb, var(--secondary) 45%, transparent);
+}

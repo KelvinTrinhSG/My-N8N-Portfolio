@@ -1,0 +1,210 @@
+{
+  "01-email-new-lead": {
+    "w": 1600,
+    "h": 755
+  },
+  "01-execution-create": {
+    "w": 1600,
+    "h": 484
+  },
+  "01-execution-duplicate": {
+    "w": 1600,
+    "h": 420
+  },
+  "01-execution-update": {
+    "w": 1600,
+    "h": 484
+  },
+  "01-hubspot-contact": {
+    "w": 1600,
+    "h": 900
+  },
+  "01-sheet-leads": {
+    "w": 1600,
+    "h": 900
+  },
+  "02-execution-accepted": {
+    "w": 1600,
+    "h": 1042
+  },
+  "02-execution-duplicate": {
+    "w": 1600,
+    "h": 1042
+  },
+  "02-execution-rate-limited": {
+    "w": 1600,
+    "h": 1042
+  },
+  "02-execution-rejected": {
+    "w": 1600,
+    "h": 1042
+  },
+  "02-execution-spam": {
+    "w": 1600,
+    "h": 1042
+  },
+  "02-live-test-run": {
+    "w": 1600,
+    "h": 876
+  },
+  "02-sheet-spam-log": {
+    "w": 1600,
+    "h": 1158
+  },
+  "03-email-ops": {
+    "w": 1600,
+    "h": 467
+  },
+  "03-execution-dead": {
+    "w": 1600,
+    "h": 624
+  },
+  "03-execution-resolved": {
+    "w": 1600,
+    "h": 624
+  },
+  "03-sheet-failed-syncs": {
+    "w": 1600,
+    "h": 300
+  },
+  "04-email-rep": {
+    "w": 1600,
+    "h": 488
+  },
+  "04-execution-new-lead": {
+    "w": 1600,
+    "h": 559
+  },
+  "04-execution-owner-kept": {
+    "w": 1600,
+    "h": 559
+  },
+  "04-sheet-assignments": {
+    "w": 1600,
+    "h": 300
+  },
+  "05-email-breach": {
+    "w": 1600,
+    "h": 469
+  },
+  "05-email-reminder": {
+    "w": 1600,
+    "h": 450
+  },
+  "05-execution-alerts": {
+    "w": 1600,
+    "h": 630
+  },
+  "05-execution-no-repeat": {
+    "w": 1600,
+    "h": 630
+  },
+  "05-sheet-leads-sla": {
+    "w": 1600,
+    "h": 300
+  },
+  "06-execution-incremental": {
+    "w": 1600,
+    "h": 483
+  },
+  "06-execution-pagination": {
+    "w": 1600,
+    "h": 483
+  },
+  "06-sheet-crm-contacts": {
+    "w": 1600,
+    "h": 300
+  },
+  "06-sheet-sync-state": {
+    "w": 1600,
+    "h": 300
+  },
+  "07-email-report": {
+    "w": 1600,
+    "h": 726
+  },
+  "07-execution-import": {
+    "w": 1600,
+    "h": 630
+  },
+  "07-sheet-import-rejects": {
+    "w": 1600,
+    "h": 300
+  },
+  "08-execution-batch": {
+    "w": 1600,
+    "h": 498
+  },
+  "08-execution-campaign-reply": {
+    "w": 1600,
+    "h": 498
+  },
+  "08-execution-thread-skip": {
+    "w": 1600,
+    "h": 465
+  },
+  "08-hubspot-contact": {
+    "w": 1600,
+    "h": 900
+  },
+  "08-sheet-email-triage": {
+    "w": 1600,
+    "h": 235
+  },
+  "09-email-host-inbox": {
+    "w": 1600,
+    "h": 114
+  },
+  "09-execution-booked": {
+    "w": 1600,
+    "h": 697
+  },
+  "09-execution-canceled": {
+    "w": 1600,
+    "h": 697
+  },
+  "09-execution-retry-bug": {
+    "w": 1600,
+    "h": 697
+  },
+  "09-execution-retry-fixed": {
+    "w": 1600,
+    "h": 697
+  },
+  "09-hubspot-deal": {
+    "w": 1600,
+    "h": 900
+  },
+  "09-sheet-meetings": {
+    "w": 1600,
+    "h": 150
+  },
+  "10a-email-after-window": {
+    "w": 1600,
+    "h": 458
+  },
+  "10a-email-alert": {
+    "w": 1600,
+    "h": 554
+  },
+  "10a-execution-alert": {
+    "w": 1600,
+    "h": 1025
+  },
+  "10a-execution-suppressed": {
+    "w": 1600,
+    "h": 1025
+  },
+  "10a-sheet-error-log": {
+    "w": 1600,
+    "h": 180
+  },
+  "10b-email-health": {
+    "w": 1600,
+    "h": 774
+  },
+  "10b-execution-report": {
+    "w": 1600,
+    "h": 575
+  }
+}

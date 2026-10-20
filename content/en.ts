@@ -25,6 +25,7 @@ export const en = {
       "I build automations that don't lose leads: tested, secured, and wired into the tools your team already uses.",
     viewProjects: "View projects",
     contact: "Contact",
+    avatarAlt: "Portrait of Kelvin Trinh",
   },
   about: {
     title: "About",
@@ -71,6 +72,7 @@ export const en = {
     howItWorks: "How it works",
     highlights: "Production highlights",
     result: "Result",
+    proof: "Live run proof",
     viewOnGitHub: "View on GitHub",
   },
   contact: {
