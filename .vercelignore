@@ -1,0 +1,9 @@
+# Not needed to build the site on Vercel
+/.cache
+/out
+/.next
+/node_modules
+# Private learner context and local credentials
+/devpost/learner-profile.md
+.env
+.env.*
