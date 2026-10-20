@@ -2,6 +2,8 @@
 
 A bilingual (English / Vietnamese) portfolio for production-ready n8n automations and AI agents. Visitors browse projects, expand each workflow to see how it works and the proof from live runs, then get in touch.
 
+**Live:** https://my-n8n-portfolio.vercel.app
+
 The first project is [n8n-form-crm-automations](https://github.com/KelvinTrinhSG/n8n-form-crm-automations): 10 workflows, 63 tests, all run live against HubSpot, Google Sheets and Gmail.
 
 ## Features

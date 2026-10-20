@@ -101,3 +101,4 @@ Activity mode: recap (dev server đang chạy; learner chọn đi tiếp). App m
 - Ảnh bìa thẻ dự án có phương án dự phòng (nền gradient) khi ảnh lỗi — lúc thử thêm dự án mới chưa có ảnh, thẻ hiện biểu tượng ảnh vỡ.
 - `npm run check` chạy với `--disable-warning=MODULE_TYPELESS_PACKAGE_JSON` — Node 24 đọc thẳng file `.ts` nội dung và cảnh báo về kiểu module; tắt riêng cảnh báo này thay vì đổi `"type"` của cả dự án.
 - Tailwind 4 qua `@tailwindcss/postcss` chạy được với Next 16.4 (điểm "chưa kiểm chứng" trong spec) — không cần cấu hình loader Turbopack như Skill Pack guide.
+- Đưa lên Vercel bằng CLI (`vercel deploy --prod`) tại https://my-n8n-portfolio.vercel.app thay vì import repo trên vercel.com/new như spec; `vercel git connect` thất bại vì tài khoản Vercel chưa có quyền với GitHub `KelvinTrinhSG`, nên push lên `main` chưa tự deploy lại. Bộ kiểm tra trình duyệt slice 2/4/5/6 đều đạt trên bản online.
