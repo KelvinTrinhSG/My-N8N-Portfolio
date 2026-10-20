@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import type { Project } from "@/content/types";
 import Tag from "@/components/ui/Tag";
 import { shotSrc, thumbSize } from "@/lib/shots";
+import { useLang } from "@/lib/providers";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const { pick } = useLang();
   return (
     <Link
       href={`/projects/${project.slug}/`}
@@ -21,10 +25,10 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
       </span>
       <span className="flex flex-1 flex-col gap-3 p-5">
-        <span className="text-lg font-bold leading-snug group-hover:text-(--primary)">{project.name.en}</span>
-        <span className="text-sm leading-relaxed text-(--text-muted)">{project.summary.en}</span>
+        <span className="text-lg font-bold leading-snug group-hover:text-(--primary)">{pick(project.name)}</span>
+        <span className="text-sm leading-relaxed text-(--text-muted)">{pick(project.summary)}</span>
         <span className="figure text-base font-extrabold text-(--secondary)">
-          {project.stats.map((s) => `${s.value} ${s.label.en}`).join(" · ")}
+          {project.stats.map((s) => `${s.value} ${pick(s.label)}`).join(" · ")}
         </span>
         <span className="mt-auto flex flex-wrap gap-1.5 pt-1">
           {project.tags.map((t) => (

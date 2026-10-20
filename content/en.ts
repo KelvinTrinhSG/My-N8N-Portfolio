@@ -16,6 +16,9 @@ export const en = {
       projects: "Projects",
       contact: "Contact",
     },
+    language: "Language",
+    toLight: "Switch to light mode",
+    toDark: "Switch to dark mode",
   },
   hero: {
     greeting: "Hi, I'm",

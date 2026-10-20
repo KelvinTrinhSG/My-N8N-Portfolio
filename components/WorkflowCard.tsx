@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import type { Workflow } from "@/content/types";
-import { en } from "@/content/en";
+import { useLang } from "@/lib/providers";
 import Tag from "@/components/ui/Tag";
 import ScreenshotStrip from "@/components/ScreenshotStrip";
 
@@ -11,7 +11,8 @@ type Props = { workflow: Workflow; repo: string; slug: string };
 export default function WorkflowCard({ workflow, repo, slug }: Props) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
-  const t = en.workflow;
+  const { t: dict, pick } = useLang();
+  const t = dict.workflow;
   const w = workflow;
   const githubUrl = `${repo}/tree/main/projects/${w.folder}`;
 
@@ -29,8 +30,8 @@ export default function WorkflowCard({ workflow, repo, slug }: Props) {
       >
         <span className="figure shrink-0 pt-0.5 text-lg font-extrabold text-(--primary)">{w.id}</span>
         <span className="min-w-0 flex-1">
-          <span className="block font-bold leading-snug">{w.name.en}</span>
-          <span className="mt-1 block text-sm leading-relaxed text-(--text-muted)">{w.problem.en}</span>
+          <span className="block font-bold leading-snug">{pick(w.name)}</span>
+          <span className="mt-1 block text-sm leading-relaxed text-(--text-muted)">{pick(w.problem)}</span>
           <span className="mt-3 flex flex-wrap gap-1.5">
             {w.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
@@ -50,7 +51,7 @@ export default function WorkflowCard({ workflow, repo, slug }: Props) {
       {open && (
         <div id={panelId} className="space-y-5 border-t border-(--border) px-5 pt-5 pb-6 sm:pl-14">
           <Block title={t.trigger}>
-            <p className="figure text-sm leading-relaxed">{w.trigger.en}</p>
+            <p className="figure text-sm leading-relaxed">{pick(w.trigger)}</p>
           </Block>
 
           <Block title={t.howItWorks}>
@@ -58,7 +59,7 @@ export default function WorkflowCard({ workflow, repo, slug }: Props) {
               {w.steps.map((s, i) => (
                 <li key={s.en} className="flex gap-2">
                   <span className="figure shrink-0 font-bold text-(--secondary)">{i + 1}.</span>
-                  <span>{s.en}</span>
+                  <span>{pick(s)}</span>
                 </li>
               ))}
             </ol>
@@ -71,7 +72,7 @@ export default function WorkflowCard({ workflow, repo, slug }: Props) {
                   <span className="shrink-0 text-(--success)" aria-hidden>
                     ✓
                   </span>
-                  <span>{h.en}</span>
+                  <span>{pick(h)}</span>
                 </li>
               ))}
             </ul>
@@ -79,7 +80,7 @@ export default function WorkflowCard({ workflow, repo, slug }: Props) {
 
           {w.result && (
             <Block title={t.result}>
-              <p className="figure text-sm font-bold text-(--secondary)">{w.result.en}</p>
+              <p className="figure text-sm font-bold text-(--secondary)">{pick(w.result)}</p>
             </Block>
           )}
 

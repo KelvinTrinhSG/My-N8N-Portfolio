@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import type { Screenshot } from "@/content/types";
-import { en } from "@/content/en";
+import { useLang } from "@/lib/providers";
 import { largeSize, shotSrc } from "@/lib/shots";
 
 type Props = {
@@ -20,7 +20,8 @@ const SWIPE_PX = 40;
 export default function Lightbox({ slug, shots, index, onIndex, onClose }: Props) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const touchX = useRef<number | null>(null);
-  const t = en.lightbox;
+  const { t: dict, pick } = useLang();
+  const t = dict.lightbox;
   const shot = shots[index];
   const count = shots.length;
   const prev = () => onIndex((index - 1 + count) % count);
@@ -61,7 +62,7 @@ export default function Lightbox({ slug, shots, index, onIndex, onClose }: Props
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={shot.label.en}
+      aria-label={pick(shot.label)}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
@@ -98,7 +99,7 @@ export default function Lightbox({ slug, shots, index, onIndex, onClose }: Props
       <img
         key={shot.file}
         src={shotSrc(slug, shot.file, "lg")}
-        alt={shot.label.en}
+        alt={pick(shot.label)}
         width={size?.width}
         height={size?.height}
         decoding="async"
@@ -106,7 +107,7 @@ export default function Lightbox({ slug, shots, index, onIndex, onClose }: Props
       />
 
       <p className="mt-3 flex items-center gap-3 text-sm text-white/85">
-        <span className="font-semibold">{shot.label.en}</span>
+        <span className="font-semibold">{pick(shot.label)}</span>
         <span className="figure text-white/60">
           {index + 1} / {count}
         </span>

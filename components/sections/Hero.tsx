@@ -1,8 +1,10 @@
-import { en } from "@/content/en";
+"use client";
+
+import { useLang } from "@/lib/providers";
 import ButtonLink from "@/components/ui/Button";
 
 export default function Hero() {
-  const t = en.hero;
+  const t = useLang().t.hero;
 
   return (
     <section id="home" className="hero-glow scroll-mt-16">

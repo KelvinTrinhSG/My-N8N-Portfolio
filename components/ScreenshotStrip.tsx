@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { Screenshot } from "@/content/types";
-import { en } from "@/content/en";
+import { useLang } from "@/lib/providers";
 import { shotSrc, thumbSize } from "@/lib/shots";
 import Lightbox from "@/components/Lightbox";
 
@@ -61,8 +61,9 @@ type ThumbProps = {
 
 function Thumb({ slug, shot, githubUrl, buttonRef, onOpen }: ThumbProps) {
   const [broken, setBroken] = useState(false);
+  const { t, pick } = useLang();
   const { width, height } = thumbSize(slug, shot.file);
-  const label = shot.label.en;
+  const label = pick(shot.label);
 
   return (
     <figure className="overflow-hidden rounded-(--radius-md) border border-(--border) bg-(--surface-2)">
@@ -76,14 +77,14 @@ function Thumb({ slug, shot, githubUrl, buttonRef, onOpen }: ThumbProps) {
           style={{ aspectRatio: "16 / 10" }}
         >
           <span className="font-semibold">{label}</span>
-          <span>{en.workflow.viewOnGitHub} ↗</span>
+          <span>{t.workflow.viewOnGitHub} ↗</span>
         </a>
       ) : (
         <button
           ref={buttonRef}
           type="button"
           onClick={onOpen}
-          aria-label={`${en.lightbox.open}: ${label}`}
+          aria-label={`${t.lightbox.open}: ${label}`}
           className="group block w-full cursor-zoom-in overflow-hidden"
         >
           {/* Plain <img>: static export, images are pre-compressed by scripts/images.mjs. */}

@@ -1,10 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import { en } from "@/content/en";
+import { useLang, useTheme, type Lang } from "@/lib/providers";
 
 const LINKS = ["home", "about", "skills", "projects", "contact"] as const;
+const LANGS: Lang[] = ["en", "vi"];
 
 export default function Navbar() {
-  const t = en.nav;
+  const { t, lang, setLang } = useLang();
+  const { theme, setTheme } = useTheme();
+
+  const iconBtn =
+    "flex h-9 w-9 cursor-pointer items-center justify-center rounded-(--radius-sm) border border-(--border) bg-(--surface) text-base transition-colors hover:border-(--border-strong)";
 
   return (
     <header
@@ -20,7 +27,7 @@ export default function Navbar() {
           >
             ✻
           </span>
-          <span className="truncate">{t.name}</span>
+          <span className="truncate">{t.nav.name}</span>
         </Link>
 
         {/* Links are always "/#id" so they work from the project page too. */}
@@ -31,9 +38,40 @@ export default function Navbar() {
               href={`/#${id}`}
               className="rounded-(--radius-sm) px-3 py-1.5 text-sm font-medium text-(--text-muted) transition-colors hover:bg-(--neutral-tint) hover:text-(--text)"
             >
-              {t.links[id]}
+              {t.nav.links[id]}
             </Link>
           ))}
+        </div>
+
+        <div className="flex shrink-0 items-center gap-2">
+          <div
+            role="group"
+            aria-label={t.nav.language}
+            className="flex rounded-(--radius-sm) border border-(--border) bg-(--surface) p-0.5"
+          >
+            {LANGS.map((l) => (
+              <button
+                key={l}
+                type="button"
+                onClick={() => setLang(l)}
+                aria-pressed={lang === l}
+                className="figure cursor-pointer rounded-md px-2.5 py-1 text-xs font-bold uppercase transition-colors"
+                style={lang === l ? { background: "var(--primary)", color: "var(--on-primary)" } : { color: "var(--text-dim)" }}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className={iconBtn}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={theme === "dark" ? t.nav.toLight : t.nav.toDark}
+            title={theme === "dark" ? t.nav.toLight : t.nav.toDark}
+          >
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
         </div>
       </nav>
     </header>

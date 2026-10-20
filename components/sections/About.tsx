@@ -1,8 +1,10 @@
-import { en } from "@/content/en";
+"use client";
+
+import { useLang } from "@/lib/providers";
 import SectionTitle from "@/components/ui/SectionTitle";
 
 export default function About() {
-  const t = en.about;
+  const t = useLang().t.about;
 
   return (
     <section id="about" className="scroll-mt-16 py-20">

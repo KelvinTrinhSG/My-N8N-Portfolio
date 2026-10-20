@@ -1,10 +1,12 @@
-import { en } from "@/content/en";
+"use client";
+
+import { useLang } from "@/lib/providers";
 import { projects } from "@/content/projects";
 import SectionTitle from "@/components/ui/SectionTitle";
 import ProjectCard from "@/components/ProjectCard";
 
 export default function Projects() {
-  const t = en.projects;
+  const t = useLang().t.projects;
 
   return (
     <section id="projects" className="scroll-mt-16 py-20">

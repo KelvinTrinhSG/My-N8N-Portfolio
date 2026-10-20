@@ -1,8 +1,10 @@
-import { en } from "@/content/en";
+"use client";
+
+import { useLang } from "@/lib/providers";
 import SectionTitle from "@/components/ui/SectionTitle";
 
 export default function Contact() {
-  const t = en.contact;
+  const t = useLang().t.contact;
   const cards = [
     { label: t.email, value: t.emailAddress, href: `mailto:${t.emailAddress}`, icon: "✉", external: false },
     { label: t.github, value: t.githubHandle, href: `https://github.com/${t.githubHandle}`, icon: "⌥", external: true },
